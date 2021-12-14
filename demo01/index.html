@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 demo</title>
+    <script src="./js/vue3.js"></script>
+</head>
+<body>
+    <div id="counter">
+        <h1>counter: {{num}}</h1>
+    </div>
+
+    <script>
+        const counter = {
+            data () {
+                return {
+                    num: 10
+                }
+            }
+        };
+        // app  是一个代理对象
+        let app = Vue.createApp(counter).mount('#counter');       //创建Vue实例并将对象渲染进指定的视图容器
+    </script>
+</body>
+</html>
