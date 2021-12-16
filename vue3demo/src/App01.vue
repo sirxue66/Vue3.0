@@ -1,31 +1,43 @@
 <template>
+  <h1>{{count}}</h1>
+  <button @click="add">add</button>
 
   <h1>{{Num}}</h1>
   <button @click="addNum">add</button>
+  <HelloWorld v-if="show" />
 
   <p>姓名： {{people.name}}</p>
   <p>反转 姓名： {{reName}}</p>
   <p>年龄： {{people.age}}</p>
   <p>性别： {{sex}}</p>
   <button @click="changName">改名</button>
-
-  <children :name="name" :age="age"></children>
-
-  <child></child>
 </template>
 
 <script>
-import {reactive, ref, toRefs, computed, watchEffect, watch, provide} from 'vue'
-import Children from "./components/children.vue"
-import Child from './components/child.vue'
+import {reactive, ref, toRefs, computed, watchEffect, watch} from 'vue'
+import HelloWorld from './components/HelloWorld.vue'
 export default {
   name: 'App',
-    components: {
-        Children,
-        Child  
-    },
+//   选项型api
+  data(){
+      console.log("data");
+    return{
+        count: 0,
+        show: true
+    }
+  },
+  components: {
+      HelloWorld
+  },
+  methods: {
+      add(){
+          this.count ++;
+          this.show = !this.show;
+      }
+  },
+
 //   组合api
-    setup() {
+    setup(props) {
         console.log("setup");
         const Num = ref(0);       // ref 响应式一些字符串 数字
         const addNum = () => {
@@ -39,7 +51,6 @@ export default {
                 return people.name.split('').reverse().join('');
             })
         });
-        provide('people', people);
         const changName = () => {
             console.log("改变姓名");
             people.name = "老王";
@@ -53,14 +64,27 @@ export default {
             console.log("监听Num");
         });
 
-        const user = reactive({
-            userName: "张飞",
-            userAge: 21,
-            userSex: "男人"
-        });
-        provide("user", user)
-
         return {Num, addNum, people, changName, ...toRefs(people)}
+    },
+
+
+    beforeCreate() {
+        console.log("数据初始化之前")
+    },
+    created() {
+        console.log("数据初始化之后")
+    },
+    beforeMount() {
+        console.log("数据挂载之前")
+    },
+    mounted() {
+        console.log("数据挂载之后")
+    },
+    beforeUnmount() {
+        console.log("卸载之前")
+    },
+    unmounted() {
+        console.log("卸载之后")
     },
 }
 </script>
