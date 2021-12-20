@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import {inject, reactive} from "vue"
+import {inject, reactive } from "vue"
 export default {
   name: 'HelloWorld',
   props: {
