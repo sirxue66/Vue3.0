@@ -1,7 +1,10 @@
 <template>
+    <marquee behavior="scroll" direction="left">
+        marquee 走马灯标签 《----- 飘过。。。。----》
+    </marquee>
+
   <h1>ajax请求事例(配置代理 跨域)</h1>
   <HelloWorld msg="Hello Vue 3.0 + Vite" @Cnext="next" v-if="showChild"></HelloWorld>
-
 </template>
 
 <script>
