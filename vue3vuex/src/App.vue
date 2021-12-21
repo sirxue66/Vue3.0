@@ -20,8 +20,7 @@ export default {
   setup() {	
       console.log("这是父组件");
     let showChild = ref(false);
-    let api = "https://api.apiopen.top/getJoke?page=1&count=10&type=video";
-
+    let api = "/api/web201605/js/herolist.json";
     fetch(api).then(res => res.json()).then(result => {
         console.log(result);
         store.setmsaage(result.result);

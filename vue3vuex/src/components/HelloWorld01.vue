@@ -3,8 +3,8 @@
   <h2>{{store.state.stateMsg}}</h2>
   <button @click="store.changeMsg('store 已改变')">change store</button>
 
-  <div v-for="(item,i) in list" :key="i">
-    <p>{{item.cname}}  --------------->----------------------  {{item.title}}</p>
+  <div v-for="(item,i) in list" :key="i" style="text-align:left;">
+    <p>{{item.text}}</p>
   </div>
   <button @click="fatherNext">下一页</button>
 </template>
@@ -18,6 +18,8 @@ export default {
   },
 setup(props,context) {
   console.log("这是子组件");
+  console.log("子组件接受的props",props);
+  console.log("子组件接受的context",context);
     let store = reactive(inject('store'));
     let list = reactive(store.state.message);
 

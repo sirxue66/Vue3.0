@@ -2,11 +2,11 @@
  * 配置跨域 proxy
  */
 module.exports = {
-    Proxy: {
+    proxy: {
         "/api": {
-            target: "https://client.10010.com/servicetransactbusiness/transactSpare",
+            target: "https://pvp.qq.com/",
             changeOrigin: true,
-            reWrite:(url) => url.replace('/^\/api/','')
+            rewrite:(url) => url.replace(/^\/api/,'')
         },
     }
 }
