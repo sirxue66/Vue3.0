@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 1.0.0
+ * @Author: xuecheng
+ * @Date: 2021-12-17 12:58:24
+ * @LastEditors: 
+ * @LastEditTime: 2022-03-08 16:54:57
+ */
 import {createRouter,createWebHashHistory,createMemoryHistory} from "vue-router"
 
 
@@ -8,6 +16,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: () => import("../views/home.vue")
+},
+{
+    path: '/event',
+    name: 'shijian',
+    component: () => import("../views/event.vue")
 },
 {
     path: '/detail',
